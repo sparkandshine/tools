@@ -1,0 +1,25 @@
+Fri Jan 29 23:44:12 2016
+latexindent.pl version 2.1R, a script to indent .tex files
+latexindent.pl lives here: /home/qiankun/git/tools/documents_output/latex_indent/
+
+Modules are being loaded from the following directories:
+ 	/usr/share/perl/5.18/FindBin.pm
+	/usr/share/perl5/YAML/Tiny.pm
+	/usr/share/perl/5.18/File/Copy.pm
+	/usr/share/perl/5.18/File/Basename.pm
+	/usr/share/perl/5.18/Getopt/Long.pm
+	/usr/local/share/perl/5.18.2/File/HomeDir.pm
+Directory for backup files and indent.log: test
+Reading defaultSettings.yaml from /home/qiankun/git/tools/documents_output/latex_indent/defaultSettings.yaml
+
+Home directory is /home/qiankun
+To specify user settings you would put indentconfig.yaml here: 
+	/home/qiankun/indentconfig.yaml
+
+Alternatively, you can use the hidden file .indentconfig.yaml as: 
+	/home/qiankun/.indentconfig.yaml
+
+Line Count of test/test.tex: 496
+Line Count of indented test/test.tex: 496
+
+Line counts of original file and indented file match

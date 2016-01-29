@@ -1,0 +1,496 @@
+\documentclass[compress]{beamer}
+\usetheme{Warsaw} 
+
+\beamertemplatenavigationsymbolsempty
+\setbeamertemplate{headline}{}
+
+
+\title[<short version for footer>]{<long version for titlepage>}
+\usepackage{lipsum}
+
+\usepackage{verbatim}  %for multiline comment
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx, epstopdf}
+\epstopdfsetup{outdir=../figures/}
+\usepackage{float}
+\graphicspath{{../figures/}}
+\renewcommand{\figurename}{Fig.}
+
+\usepackage[capitalise]{cleveref}
+%\usepackage[numbers]{natbib}
+\usepackage{cite}
+
+\usepackage{caption}
+\setbeamertemplate{caption}[numbered]
+\captionsetup{font=scriptsize,labelfont=scriptsize}
+
+
+\usepackage{tabularx} %for automatic line-break in tabular
+\usepackage{amsmath}
+
+\usepackage{makecell}  %for table header, center and bold
+
+\begin{comment}
+\makeatletter
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.4\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertsection
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.3\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertsubsection
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.3\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    %\usebeamerfont{date in head/foot}\insertsubsubsection
+    \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+    \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+\makeatother
+\end{comment}
+
+
+\makeatletter
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.9\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}%
+    \insertsectionnavigationhorizontal{.9\paperwidth}{}{}%
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.1\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot} %\insertshortdate{}\hspace*{2em}
+    \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+\makeatother
+
+%font size
+\usepackage{lipsum}
+\newcommand\Fontvi{\fontsize{6}{7.2}\selectfont}
+\newcommand\FontFormulars{\fontsize{5}{6.2}\selectfont}
+
+
+
+\title{XOR Network Coding in Delay Tolerant Networks with Data Mules \\
+%\footnote{In preparation for IEEE/ICCC (International Conference on Communications in China)}}
+%\title{XOR Network Coding in DTNs with Data Mules
+}
+
+\author{Qiankun Su, Katia Jaffrès-Runser, Gentian Jakllari and Charly Poulliat}
+
+
+\date{July 15th, 2015}
+
+\thispagestyle{empty} 
+
+\titlegraphic{
+\vspace*{\fill}
+\centering
+   \includegraphics[scale=0.1]{logo_irit}\hspace*{1.0cm}~
+   \includegraphics[scale=0.2]{logo_enseeiht}\hspace*{1.0cm}~
+   \includegraphics[scale=0.2]{logo_ut}
+\vspace*{\fill} 
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}{Outline}
+    \tableofcontents
+\end{frame}
+
+
+\section{Introduction}
+
+\subsection{Scenario description}
+
+\begin{frame}{Scenario description} 
+    \begin{figure}[!t]
+        \centering
+        %\includegraphics[width=2.5in]{scenario-crop.pdf}
+        \includegraphics[scale=0.5]{scenario-crop.pdf}
+        \caption{Village Communication Networks}
+        \label{f_scenario}
+    \end{figure}
+
+
+    \begin{itemize}
+        \item Two remote villages communicate with each other via the city base station
+        \item Data mule: bus1, bus2
+        \pause
+        \item The city: heavy network loads
+        \item Network coding            
+    \end{itemize}        
+\end{frame}
+
+
+
+\section{Theoretical analysis and simulation results}
+
+\subsection{Modelling}
+\begin{frame}{Modelling}
+\begin{figure}[!t]
+\centering
+        %includegraphics[scale=0.8]{scenario.png}
+        %\includegraphics[scale=0.4]{modeling.png}
+        \includegraphics[width=2.5in]{model-crop.pdf}
+        \caption{Model of village communication networks}
+        \label{f_modeling}
+\end{figure}
+
+Symbols:
+\begin{itemize}
+\item[$t_v$, $t_c$] the waiting time in remote villages and the city
+\item[$t_b$] the travelling time of bus 
+\item[$r$] the message interval
+\end{itemize}
+
+Assumption:
+\begin{itemize}
+\item the bandwidth is divided equally between the contending nodes
+\item buses synchronize well
+\item a node sends one message at most per unit time
+\end{itemize}
+\end{frame}
+
+\begin{frame}{XOR network coding}
+\begin{figure}[!t]
+\centering
+        %includegraphics[scale=0.8]{scenario.png}
+        %\includegraphics[scale=0.4]{xor_network_coding_benifits.png}
+        \includegraphics[width=2.5in]{with_without_network_coding-crop.pdf}
+        \caption{Benifits from network coding}
+        \label{f_xor_network_coding_benifits}
+\end{figure}
+\begin{itemize}
+\item without/with network coding: 4 vs 3 transmissions
+\item the bandwidth is divided equally
+\begin{itemize}
+	\item without network coding: $N_{d\_wo} = \frac{1}{3} \cdot N$
+	\item with network coding: $N_{d\_nc} = \frac{1}{3} \cdot 2 \cdot N$
+	\item $N$ denotes the number of messages received from buses
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\subsection{Analysis: $2 \rightarrow N$ villages}
+\begin{frame}{Analysis on two villages}
+\Fontvi
+%\lipsum[1]
+
+\begin{itemize}
+\item $\frac{2t_b + t_v + t_c}{r} > \frac{t_c}{3} 
+\Rightarrow r < \frac{3 \cdot (2t_b + t_v + t_c)}{t_c}$
+, the city node is unable to drain all created messages \emph{with} network coding.
+
+\begin{equation}
+DP_{wo} 
+% = \frac{N_{d\_wo}}{N_c} 
+= \frac{\frac{t_c}{3}}{2 \cdot \frac{2t_b + t_v + t_c}{r}}  
+= \frac{t_c}{6 \cdot (2t_b + t_v + t_c)} \cdot r
+\end{equation}
+
+\begin{equation}
+DP_{nc} 
+%= \frac{N_{d\_nc}}{N_c} 
+= \frac{2 \cdot \frac{t_c}{3}}{2 \cdot \frac{2t_b + t_v + t_c}{r}} 
+= \frac{t_c}{3 \cdot (2t_b + t_v + t_c)}\cdot r
+\end{equation}
+
+\begin{equation}
+G(r) = DP_{nc} - DP_{wo} =  \frac{t_c}{6 \cdot (2t_b + t_v + t_c)} \cdot r 
+\end{equation}
+
+\item $\frac{3 \cdot (2t_b + t_v + t_c)}{t_c} \le r < \frac{4 \cdot(2t_b + t_v + t_c)}{t_c}$
+, the city node is unable to drain all created messages \emph{without} network coding.
+
+\begin{equation}
+DP_{nc} = 1
+\end{equation}
+
+\begin{equation}
+DP_{wo} 
+% = \frac{N_{d\_wo}}{N_c} 
+= \frac{t_c - 2 \cdot \frac{2t_b + t_v + t_c}{r}}{2 \cdot \frac{2t_b + t_v + t_c}{r}}  
+= \frac{t_c}{2 \cdot (2t_b + t_v + t_c)} \cdot r - 1
+\end{equation}
+
+\begin{equation}
+G(r) = DP_{nc} - DP_{wo} = 2 - \frac{t_c}{2 \cdot (2t_b + t_v + t_c)} \cdot r
+\end{equation}
+
+\item $r \ge \frac{4 \cdot(2t_b + t_v + t_c)}{t_c}$
+, the city node is capable of draining all created messages with or without network coding.
+
+\begin{equation}
+DP_{nc} = 1
+\end{equation}
+
+\begin{equation}
+DP_{wo} = 1
+\end{equation}
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Simulation on two villages}
+Assign $100$ to $t_v, t_b, t_c$,
+
+\begin{equation*}
+\resizebox{.5\textwidth}{!}{$\displaystyle % restart math mode!
+\left\{
+\begin{aligned}
+DP_{wo} &= \frac{1}{24} \cdot r 		& DP_{nc}&=\frac{1}{12} \cdot r, & r<12 \\
+DP_{wo} &= \frac{1}{8} \cdot r - 1	& DP_{nc}&=1 , & 12 \le r < 16 \\
+DP_{wo} &=1 							& DP_{nc}&= 1, & r \ge 16
+\end{aligned}
+\right.
+$}
+\end{equation*}
+
+\begin{figure}[!t]
+\centering
+        \includegraphics[scale=0.2]{villageUpbound_delivery_prob.png}
+        %\includegraphics{villageUpbound_delivery_prob.pdf}
+        \caption{The delivery probability in different message intervals ($N_v = 2$)}
+        \label{f_delivery_prob}
+\end{figure}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%% N villages %%%%%%%%%%%%%%
+\begin{frame}{Analysis on $N$ villages (1/2)}
+\Fontvi
+\begin{itemize}
+
+\item $\frac{2t_b + t_v + t_c}{r} \ge \frac{t_c}{N_v + 1} 
+\Rightarrow r \le \frac{(N_v + 1)(2t_b + t_v + t_c)}{t_c}$
+, no channel access is wasted.
+
+\begin{equation}
+DP_{nc} 
+% = \frac{N_{d\_nc}}{N_c} 
+= \frac{2 \cdot \frac{t_c}{N_v + 1}}
+{N_v \cdot \frac{2t_b + t_v + t_c}{r}} 
+= \frac{2 \cdot t_c \cdot r}{N_v \cdot (N_v + 1) \cdot (2t_b + t_v + t_c)}
+\end{equation}
+
+\begin{equation}
+DP_{wo}
+% = \frac{N_{d\_wo}}{N_c} 
+= \frac{\frac{t_c}{N_v + 1}}
+{N_v \cdot \frac{2t_b + t_v + t_c}{r}} 
+= \frac{t_c \cdot r}{N_v \cdot (N_v + 1) \cdot (2t_b + t_v + t_c)}
+\end{equation}
+
+\begin{equation}
+G(N_v, r) = DP_{nc} - DP_{wo} =  \frac{t_c \cdot r}{N_v \cdot (N_v + 1) \cdot (2t_b + t_v + t_c)}
+\end{equation}
+
+\item $\frac{(N_v + 1)(2t_b + t_v + t_c)}{t_c} < r < \frac{3 \cdot N_v \cdot (2t_b + t_v + t_c)}{2 \cdot t_c}$
+, the city node is unable to drain all created messages \emph{with} network coding.
+
+\begin{equation}
+DP_{wo} 
+= \frac
+{t_c - \frac{2t_b + t_v + t_c}{r} \cdot N_v}
+{\frac{2t_b + t_v + t_c}{r} \cdot N_v} 
+= \frac{t_c \cdot r}{N_v \cdot (2t_b + t_v + t_c)} - 1
+\end{equation}
+
+
+\begin{equation}
+DP_{nc} 
+= \frac
+{(t_c - \frac{2t_b + t_v + t_c}{r} \cdot N_v) \cdot 2}
+{\frac{2t_b + t_v + t_c}{r} \cdot N_v} 
+= \frac{2 \cdot t_c \cdot r}{N_v \cdot (2t_b + t_v + t_c)} - 2
+\end{equation}
+
+
+\begin{equation}
+G(N_v, r) = DP_{nc} - DP_{wo} =  \frac{t_c \cdot r}{N_v \cdot (2t_b + t_v + t_c)} - 1
+\end{equation}
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Analysis on $N$ villages (2/2)}
+\Fontvi
+\begin{itemize}
+
+\item $\frac{3 \cdot N_v \cdot (2t_b + t_v + t_c)}{2 \cdot t_c} \le r < \frac{2\cdot N_v \cdot (2t_b + t_v + t_c)}{t_c}$
+, the city node is unable to drain all created messages \emph{without} network coding.
+
+\begin{equation}
+DP_{nc} = 1
+\end{equation}
+
+\begin{equation}
+DP_{wo} 
+%= \frac{N_{d\_wo}}{N_c} 
+= \frac{t_c - \frac{2t_b + t_v + t_c}{r} \cdot N_v}{\frac{2t_b + t_v + t_c}{r} \cdot N_v}  
+= \frac{t_c \cdot r}{(2t_b + t_v + t_c) \cdot N_v} - 1
+\end{equation}
+
+\begin{equation}
+G(N_v, r) = DP_{nc} - DP_{wo} = 2 - \frac{t_c \cdot r}{(2t_b + t_v + t_c) \cdot N_v}
+\end{equation}
+
+\item $r \ge \frac{2\cdot N_v \cdot (2t_b + t_v + t_c)}{t_c}$
+\begin{equation}
+DP_{nc} = 1
+\end{equation}
+
+\begin{equation}
+DP_{wo} = 1
+\end{equation}
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Simulation on $N$ villages}
+Assign $100$ to $t_v, t_b, t_c$, $4$ to $N_v$,
+
+\begin{equation*}
+\resizebox{.4\textwidth}{!}{$\displaystyle % restart math mode!
+\left\{
+\begin{aligned}
+DP_{wo}&=\frac{1}{80} \cdot r 	& DP_{nc} &= \frac{1}{40} \cdot r, & r \le 20 \\
+DP_{wo}&=\frac{1}{16} \cdot r -1 & DP_{nc} &= \frac{1}{8} \cdot r -2, & 20 < r < 24 \\
+DP_{wo}&=\frac{1}{16} \cdot r -1 & DP_{nc} &= 1, & 24 \le r < 32 \\
+DP_{wo}&=1 						& DP_{nc} &= 1, & r \ge 32
+\end{aligned}
+\right.
+$}
+\end{equation*}
+
+\begin{figure}[!t]
+\centering
+        \includegraphics[scale=0.2]{villageUpboundCross_delivery_prob.png}
+        \caption{The delivery probability in different message intervals ($N_v = 4$)}
+        \label{f_delivery_prob_cross}
+\end{figure}
+
+\end{frame}
+
+
+\subsection{Different overlapping intervals}
+\begin{frame}{Different overlapping intervals}
+\begin{figure}
+\centering
+        \includegraphics[scale=0.5]{overlapping_intervals-crop.pdf}
+        \caption{Overlapping intervals}
+        \label{f_overlapping_intervals}
+\end{figure}
+
+\begin{itemize}
+\item The city node could not drain messages from buses \emph{with} network coding.
+\Fontvi
+\begin{equation}
+DP_{wo} 
+% = \frac{N_{d\_wo}}{N_c} 
+= \frac
+{(t_c - t_{12}) + \frac{t_{12}}{3}}
+{2 \cdot \frac{2t_b + t_v + t_c}{r}}
+= \frac{3 \cdot t_c - 2 \cdot t_{12}}{6 \cdot (2t_b + t_v + t_c)} \cdot r
+\end{equation}
+
+\begin{equation}
+DP_{nc} 
+%= \frac{N_{d\_nc}}{N_c} 
+= \frac
+{(t_c - t_{12}) + \frac{t_{12}}{3} \cdot 2}
+{2 \cdot \frac{2t_b + t_v + t_c}{r}} 
+= \frac{3 \cdot t_c - t_{12}}{6 \cdot (2t_b + t_v + t_c)}\cdot r
+\end{equation}
+
+
+\begin{equation}
+G(r) = DP_{nc} - DP_{wo} =  \frac{t_{12}}{6 \cdot (2t_b + t_v + t_c)} \cdot r 
+\end{equation}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Simulation on different overlapping intervals}
+Assign $100$ to $t_v, t_b, t_c$, $12$ to $r$,
+\begin{figure}[!t]
+\centering
+        %includegraphics[scale=0.8]{scenario.png}
+        \includegraphics[scale=0.3]{villageUpboundDiffOverlap_delivery_prob.png}
+        \caption{The delivery probability in different overlapping time}
+        \label{f_diff_overlapping_wait_time}
+\end{figure}
+\end{frame}
+
+\section{Discussion on expanding to real networks}
+\begin{frame}{Expand to real networks (1/2)} 
+\begin{itemize}
+\item tisseo Toulouse open data 
+\item the overlapping time of pair of buses
+\item the amount of data that two buses can exchange one day
+\Fontvi
+\begin{equation}
+D_{wo} = [ min(t_1, t_2) + \frac{1}{3} \cdot t_{12} ] \cdot R_b
+\end{equation}
+
+\begin{equation}
+D_{nc} = [ min(t_1, t_2) + \frac{2}{3} \cdot t_{12} ] \cdot R_b
+\end{equation}
+
+\end{itemize}
+
+\end{frame}
+
+
+
+\begin{frame}{Expand to real networks (2/2)} 
+\Fontvi
+Assign $R_b = 100Mb/s$,
+
+\begin{figure}
+\centering
+        %includegraphics[scale=0.8]{scenario.png}
+        \includegraphics[scale=0.3]{pair_buses_throughput_improvement.png}
+        \caption{The throughput improvement achieved by network coding}
+        \label{f_throuhgput_improvement}
+\end{figure}
+\end{frame}
+
+
+\section{Ongoing work}
+\begin{frame}{Ongoing work}
+\begin{itemize}
+\item more realistic
+\end{itemize}
+\end{frame}
+
+
+
+%\begin{frame}[plain,c]
+\begin{frame}[c]{\space}
+\begin{center}
+\Huge Thanks for your attention.
+\end{center}
+
+\centering
+qiankun.su@enseeiht.fr
+
+\end{frame}
+
+
+
+\end{document}
