@@ -1,0 +1,79 @@
+\documentclass{article}
+
+\usepackage{algorithm}			%  float wrapper for algorithms.
+% Don’t need to manually load the algorithmicx package, as this is done by algpseudocode.
+\usepackage{algorithmicx}		% algorithm typesetting environment. 
+\usepackage{algpseudocode}	% layout for algorithmicx
+
+\usepackage{amsmath}			% AMS mathematical facilities for LATEX
+
+% Nice looking for empty set
+\usepackage{amssymb}			%  provides an extended symbol collection
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+
+% Change the name of the label Algorithm
+%\makeatletter
+%\renewcommand{\ALG@name}{Procedure}
+%\makeatother
+
+% Rename require/ensure to input/output:
+%\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+%\renewcommand{\algorithmicensure}{\textbf{Output:}}
+
+\begin{document}
+
+% algorithm 1
+\begin{algorithm}
+	\begin{algorithmic}%[1] % The number tells where the line numbering should start
+		\caption{Coding procedure} \label{algorithm:encoding}
+		\State $B=\{\text{Buses waiting at the station } \}$
+		\State $S=\{\text{Next hop nodes to be reached by $B$ }\}$
+		\ForAll{$s_i \in S $}
+			\ForAll{$s_j \in S, j \neq i$}
+				\If{$Q_{ij} \neq \emptyset \text{ and } Q_{ji} \neq \emptyset$}
+					\State $m_i$ is picked at the head of $Q_{ij}$
+					\State $m_j$ is picked at the head of $Q_{ji}$
+					\State \Return $m_c = m_i \oplus m_j$
+				\EndIf
+			\EndFor
+		\EndFor				
+	\end{algorithmic}
+\end{algorithm}
+
+% algorithm 2
+\begin{algorithm}
+	\begin{algorithmic}[1]
+		\caption{CDS with betweenness centrality} \label{algorithm: cds bw}
+		\Require A connected graph $G(V, E)$
+		\State $d \gets \{v : bw(v)\}, v \in V$, sort by BW on ascending order
+		\State $V' \gets \emptyset$, connected dominating sets
+		\ForAll{$v$ : $bw(v), v \notin V'$}
+        	\If{$bw(v) = 0$ OR $G(V-\{v\})$ is connected}
+        	    \State $V' \gets V' \cup MAX-BW(N(v))$		
+        	\Else
+        	    \State $V' \gets V' \cup \{v\}$
+        	\EndIf
+        	\State $V \gets V-\{v\}$
+		\EndFor				
+	\end{algorithmic}
+\end{algorithm}
+
+% algorithm 3
+\begin{algorithm}
+    \caption{Euclid’s algorithm}
+    \label{euclid}
+    \begin{algorithmic}[1] % The number tells where the line numbering should start
+        \Procedure{Euclid}{$a,b$} 				\Comment{The g.c.d. of a and b}
+            \State $r\gets a \bmod b$
+            \While{$r\not=0$} 						\Comment{We have the answer if r is 0}
+                \State $a \gets b$
+                \State $b \gets r$
+                \State $r \gets a \bmod b$
+            \EndWhile\label{euclidendwhile}
+            \State \Return $b$						\Comment{The gcd is b}
+        \EndProcedure
+    \end{algorithmic}
+\end{algorithm}
+
+\end{document}

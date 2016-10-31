@@ -1,0 +1,69 @@
+\documentclass{article}
+
+\usepackage{algorithm}			%  float wrapper for algorithms.
+\usepackage{algorithmic} 
+
+\usepackage{amsmath}			% AMS mathematical facilities for LATEX
+
+% Nice looking for empty set
+\usepackage{amssymb}			%  provides an extended symbol collection
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+
+\begin{document}
+
+% algorithm 1
+\begin{algorithm}
+	\begin{algorithmic}%[1] % The number tells where the line numbering should start
+		\caption{Coding procedure} \label{algorithm:encoding}
+		\STATE $B=\{\text{Buses waiting at the station } \}$
+		\STATE $S=\{\text{Next hop nodes to be reached by $B$ }\}$
+		\FORALL{$s_i \in S $}
+			\FORALL{$s_j \in S, j \neq i$}
+				\IF{$Q_{ij} \neq \emptyset \text{ and } Q_{ji} \neq \emptyset$}
+					\STATE $m_i$ is picked at the head of $Q_{ij}$
+					\STATE $m_j$ is picked at the head of $Q_{ji}$
+					\STATE{ \RETURN $m_c = m_i \oplus m_j$}
+				\ENDIF
+			\ENDFOR
+		\ENDFOR				
+	\end{algorithmic}
+\end{algorithm}
+
+% algorithm 2
+\begin{algorithm}
+	\begin{algorithmic}%[1]
+		\caption{CDS with betweenness centrality} \label{algorithm: cds bw}
+		\REQUIRE A connected graph $G(V, E)$
+		\STATE $d \gets \{v : bw(v)\}, v \in V$, sort by BW on ascending order
+		\STATE $V' \gets \emptyset$, connected dominating sets
+		\FORALL{$v$ : $bw(v), v \notin V'$}
+        	\IF{$bw(v) = 0$ OR $G(V-\{v\})$ is connected}
+        	    \STATE $V' \gets V' \cup MAX-BW(N(v))$		
+        	\ELSE
+        	    \STATE $V' \gets V' \cup \{v\}$
+        	\ENDIF
+        	\STATE $V \gets V-\{v\}$
+		\ENDFOR				
+	\end{algorithmic}
+\end{algorithm}
+
+% algorithm 3
+\begin{algorithm}
+    \caption{Euclid’s algorithm}
+    \label{euclid}
+    \begin{algorithmic}[1] % The number tells where the line numbering should start
+        %\PROCEDURE{Euclid}{$a,b$} \COMMENT{The g.c.d. of a and b}  % no PROEDURE, FUNCTION?
+        %\FUNCTION{Euclid}{$a,b$} %\COMMENT{The g.c.d. of a and b}
+            \STATE $r\gets a \bmod b$
+            \WHILE{$r\not=0$} %\COMMENT{We have the answer if r is 0}
+                \STATE $a \gets b$
+                \STATE $b \gets r$
+                \STATE $r \gets a \bmod b$
+            \ENDWHILE\label{euclidendwhile}
+            \STATE \textbf{return} $b$			%\COMMENT{The gcd is b}
+        %\ENDFUCTION
+    \end{algorithmic}
+\end{algorithm}
+
+\end{document}
