@@ -1,0 +1,201 @@
+\documentclass[compress]{beamer}
+
+\usetheme{Frankfurt}
+
+\usepackage{lipsum} % for dummy text only
+
+% allowframebreaks numbering in the title
+\newcounter{cont}
+\makeatletter
+\setbeamertemplate{frametitle continuation}{%
+    \setcounter{cont}{\beamer@endpageofframe}%
+    \addtocounter{cont}{1}%
+    \addtocounter{cont}{-\beamer@startpageofframe}%
+    (\insertcontinuationcount/\arabic{cont})%
+}
+\makeatother
+
+% for the title page
+\title[Header, Navigation symbols and Footer]{Beamer Application Notes: Header, Navigation symbols and Footer}
+
+\author[Spark \& Shine]{
+%\resizebox{\textwidth}{!}{Spark \& Shine}
+Spark \& Shine
+}
+
+\institute{
+http://sparkandshine.net\\
+}
+
+\date[Nov. 16]{Nov. 16\textsuperscript{th}, 2016}
+
+\thispagestyle{empty} 
+
+
+% header
+
+\makeatletter
+\setbeamertemplate{headline}{%
+	\leavevmode%
+	\hbox{%
+    \begin{beamercolorbox}[wd=\paperwidth,ht=2.5ex,dp=1.125ex]{palette quaternary}%
+    	% Flush the bar to the left
+    	\insertsectionnavigationhorizontal{\paperwidth}{}{\hskip0pt plus1filll}
+    	% Flush the bar to the left
+    	%\insertsectionnavigationhorizontal{\paperwidth}{\hskip0pt plus1filll}{}
+    	% Flush the bar to the center
+    	%\insertsectionnavigationhorizontal{\paperwidth}{\hskip0pt plus1filll}{\hskip0pt plus1filll}
+    	\insertsectionnavigationhorizontal{\paperwidth}{left}{right}
+    \end{beamercolorbox}%
+  }
+}
+\makeatother
+
+
+% footer
+\makeatletter
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.15\paperwidth,ht=2.25ex,dp=1ex,center]{institute in head/foot}%
+    \usebeamerfont{title in head/foot}%
+    \insertshortauthor 
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.6\paperwidth,ht=2.25ex,dp=1ex,center]{institute in head/foot}%
+    \usebeamerfont{title in head/foot}%
+    \insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.15\paperwidth,ht=2.25ex,dp=1ex,center]{institute in head/foot}%
+    \usebeamerfont{title in head/foot}%
+    \insertshortdate
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.1\paperwidth,ht=2.25ex,dp=1ex,right]{institute in head/foot}%
+    \usebeamerfont{title in head/foot} 
+    \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+  \end{beamercolorbox}}%
+}
+\makeatother
+
+
+% Get rid of
+% header navigation bar
+%\setbeamertemplate{headline}{}
+
+% bottom navigation symbols
+%\setbeamertemplate{navigation symbols}{}
+
+% footer
+%\setbeamertemplate{footline}{}
+
+
+% begin document
+\begin{document}
+
+\begin{frame}[noframenumbering]%[shrink=20]
+	\titlepage
+\end{frame}
+
+\section{One Day At A Time}
+\subsection{Lyrics}
+\begin{frame}[allowframebreaks]{One Day At A Time, Cristy Lane}
+\begin{center}
+I'm only human, I'm just a woman. \\
+Help me believe in what I could be \\
+And all that I am. \\
+Show me the stairway, I have to climb. \\
+Lord for my sake, teach me to take \\
+One day at a time. \\
+
+Chorus: \\
+One day at a time sweet Jesus\\ 
+That's all I'm asking from you. \\
+Just give me the strength \\
+To do everyday what I have to do. \\
+Yesterday's gone sweet Jesus \\
+And tomorrow may never be mine. \\
+Lord help me today, show me the way \\
+One day at a time. \\
+
+Do you remember, when you walked among men? \\
+Well Jesus you know if you're looking below \\
+It's worse now, than then. \\
+Cheating and stealing, violence and crime \\
+So for my sake, teach me to take \\
+One day at a time. \\
+\end{center}
+\end{frame}
+
+\section{Take Me to Church}
+\subsection{Lyrics}
+\begin{frame}[allowframebreaks]{Take Me to Church}
+\begin{center}
+My lover's got humour \\
+She's the giggle at a funeral \\
+Knows everybody's disapproval \\
+I should've worshipped her sooner \\
+If the Heavens ever did speak \\
+She is the last true mouthpiece \\
+Every Sunday's getting more bleak \\
+A fresh poison each week \\
+'We were born sick, ' you heard them say it \\
+My church offers no absolutes \\
+She tells me 'worship in the bedroom' \\
+The only heaven I'll be sent to \\
+Is when I'm alone with you \\
+I was born sick, but I love it \\
+Command me to be well \\
+Amen. Amen. Amen \\
+Take me to church \\
+I'll worship like a dog at the shrine of your lies \\
+I'll tell you my sins and you can sharpen your knife \\
+Offer me that deathless death \\
+Good God, let me give you my life  \\
+Take me to church  \\
+I'll worship like a dog at the shrine of your lies  \\
+I'll tell you my sins and you can sharpen your knife  \\
+Offer me that deathless death  \\
+Good God, let me give you my life  \\
+If I'm a pagan of the good times  \\
+My lover's the sunlight  \\
+To keep the Goddess on my side  \\
+She demands a sacrifice \\
+To drain the whole sea \\
+Get something shiny \\
+Something meaty for the main course \\
+That's a fine looking high horse \\
+What you got in the stable? \\
+We've a lot of starving faithful \\
+That looks tasty \\
+That looks plenty \\
+This is hungry work \\
+Take me to church \\
+I'll worship like a dog at the shrine of your lies \\
+I'll tell you my sins and you can sharpen your knife \\
+Offer me that deathless death \\
+Good God, let me give you my life \\
+Take me to church \\
+I'll worship like a dog at the shrine of your lies \\
+I'll tell you my sins and you can sharpen your knife \\
+Offer me that deathless death \\
+Good God, let me give you my life \\
+No masters or kings when the ritual begins \\
+There is no sweeter innocence than our gentle sin \\
+In the madness and soil of that sad earthly scene \\
+Only then I am human \\
+Only then I am clean \\
+Amen. Amen. Amen \\
+Take me to church \\
+I'll worship like a dog at the shrine of your lies \\
+I'll tell you my sins and you can sharpen your knife \\
+Offer me that deathless death \\
+Good God, let me give you my life \\
+Take me to church \\
+I'll worship like a dog at the shrine of your lies \\
+I'll tell you my sins and you can sharpen your knife \\
+Offer me that deathless death \\
+Good God, let me give you my life 
+\end{center}
+\end{frame}
+\end{document}
+
